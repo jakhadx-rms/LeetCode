@@ -9,9 +9,8 @@ class Solution {
             }
             }
         int ans=0;
-        while(k>0){
+        while(k-->0){
             ans=proqu.poll();
-            k--;
         }
         return ans;
     }
