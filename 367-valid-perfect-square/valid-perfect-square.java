@@ -6,7 +6,7 @@ class Solution {
              if(sum==num){
                 return true;
              }
-             i=i+2;
+             i+=2;
         }
         return false;
     }
