@@ -26,7 +26,7 @@ class Solution {
             rightProduct*=nums[i];
             if (rightProduct>leftSum && leftSum>=0)
                 break;
-                if (rightProduct > Long.MAX_VALUE / nums[i])
+            if (rightProduct > Long.MAX_VALUE / nums[i])
                 break; 
         }
         return -1;
