@@ -10,13 +10,13 @@ class Solution {
         // }
         // return false; 
 
-        HashMap <Integer,Integer> map = new HashMap<>();
-        for(int i=0;i<nums.length;i++){
-            if(map.containsKey(nums[i])){
-                return true;
-            }
-            map.put(nums[i],i);
-        }
-        return false;
+       Set<Integer> set = new HashSet<>();
+       for(int i:nums){
+         if(set.contains(i)){
+            return true;
+         }
+         set.add(i);
+       }
+       return false;
     }
 }
