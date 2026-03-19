@@ -1,30 +1,20 @@
+
 class Solution {
-    public boolean isAnagram(String  Str1 , String  Str2) {
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) return false;
 
-        // char[] str1 = s.toCharArray();
-        // char[] str2 = t.toCharArray();
+        Map<Character, Integer> map = new HashMap<>();
 
-        // if (str1.length != str2.length) return false;
-
-        // Arrays.sort(str1);
-        // Arrays.sort(str2);
-
-        // for (int i = 0; i < str1.length; i++) {
-        //     if (str1[i] != str2[i]) {
-        //         return false;
-        //     }
-        // }
-        // Str1 = Str1.replace(" ", "").toLowerCase();
-        // Str2 = Str2.replace(" ", "").toLowerCase();
-        char[] str1 = Str1.toCharArray();
-        char[] str2 = Str2.toCharArray();
-        Arrays.sort(str1);
-        Arrays.sort(str2);
-        if(Arrays.equals(str2,str1)){
-        return true;
+        for (char c : s.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
         }
-        else{
-            return false;
+
+        for (char c : t.toCharArray()) {
+            if (!map.containsKey(c)) return false;
+            map.put(c, map.get(c) - 1);
+            if (map.get(c) == 0) map.remove(c);
         }
+
+        return map.isEmpty();
     }
 }
