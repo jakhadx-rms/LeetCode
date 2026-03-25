@@ -3,7 +3,9 @@ class Solution {
         int n=grid.length;
         int m=grid[0].length;
         int totalSum=0;
+        
         if(grid[0].length>1000) return false;
+
         for(int i=0 ;i<n;i++){
             for (int j=0;j<m;j++){
                 totalSum+=grid[i][j];
