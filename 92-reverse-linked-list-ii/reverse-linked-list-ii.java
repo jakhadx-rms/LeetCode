@@ -35,7 +35,7 @@ class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
         ListNode curr = head;
         ListNode prev = null;
-
+        ListNode frwd = head;
         for(int i = 1; i < left; i++){
             prev = curr;
             curr = curr.next;
@@ -45,10 +45,10 @@ class Solution {
         ListNode last = curr;        
 
         for(int i = 0; i < right - left + 1; i++){
-            ListNode next = curr.next;
+            frwd = curr.next;
             curr.next = prev;
             prev = curr;
-            curr = next;
+            curr = frwd;
         }
         if(head2 != null){
             head2.next = prev;
