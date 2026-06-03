@@ -5,19 +5,12 @@
 //         ListNode frwd = head;
 //         ListNode pre = null;
 //         ListNode last = head;
-//         ListNode len = head;
-//         int length = 0;
 //         for(int i = 1; i < left; i++){
 //             curr = curr.next;
 //             frwd = frwd.next;
 //             pre = curr;
 //         }
-        
-//         while(len != null){
-//             length++;
-//         }
-
-//         for(int i = 1; i <= length - right; i++){
+//         for(int i = 1; i <= right - left + 1; i++){
 //             last = last.next;
 //         }
 //         while(last != null){
