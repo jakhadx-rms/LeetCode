@@ -3,11 +3,24 @@ class Solution {
 
         HashMap<String, List<String>> map = new HashMap<>();
 
+        // for (String s : strs) {
+        //     char[] arr = s.toCharArray();
+        //     Arrays.sort(arr);
+        //     String key = new String(arr);
+        //     map.computeIfAbsent(key, k -> new ArrayList<>()).add(s);
+        // }
         for (String s : strs) {
             char[] arr = s.toCharArray();
             Arrays.sort(arr);
             String key = new String(arr);
-            map.computeIfAbsent(key, k -> new ArrayList<>()).add(s);
+            if(map.containsKey(key)) {
+                map.get(key).add(s);
+            }
+            else {
+                List<String> list = new ArrayList<>();
+                list.add(s);
+                map.put(key, list);
+            }
         }
         return new ArrayList<>(map.values());
     }
