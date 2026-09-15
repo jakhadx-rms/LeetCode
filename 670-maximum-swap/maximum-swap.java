@@ -1,43 +1,40 @@
 class Solution {
     public int maximumSwap(int num) {
-        int temp = num;
-        int n = 0;
-        while (temp > 0) {
-            n++;
-            temp /= 10;
+       int n = 0;
+       int temp = num;
+       while(temp > 0){
+        n++;
+        temp /= 10;
+       }
+       int nums[] = new int[n];
+       for(int i = n - 1; i >= 0; i--){
+           nums[i] = num % 10;
+            num /= 10;
+       }
+       int suffixmax[] = new int[n];
+       suffixmax[n - 1] = n - 1;
+       for(int i = n - 2; i >= 0; i--){
+        int next = suffixmax[i + 1];
+        if(nums[i] > nums[next]){
+            suffixmax[i] = i;
         }
-        int[] nums = new int[n];
-        temp = num;
-        for (int i = n - 1; i >= 0; i--) {
-            nums[i] = temp % 10;
-            temp /= 10;
+        else{
+            suffixmax[i] = next;
         }
-        int[] suffixMax = new int[n];
-        suffixMax[n - 1] = n - 1;
-        for (int i = n - 2; i >= 0; i--) {
-            int next = suffixMax[i + 1];
-            if (nums[i] > nums[next]) {
-                suffixMax[i] = i;
-            } else {
-
-                suffixMax[i] = next;
-            }
+       }
+       for(int i = 0; i < n - 1; i++){
+        int maxind = suffixmax[i + 1];
+        if(nums[maxind] > nums[i]){
+            int t = nums[maxind];
+            nums[maxind] = nums[i];
+            nums[i] = t;
+            break;
         }
-        for (int i = 0; i < n - 1; i++) {
-            int maxIndex = suffixMax[i + 1];
-            if (nums[maxIndex] > nums[i]) {
-
-                int tempDigit = nums[i];
-                nums[i] = nums[maxIndex];
-                nums[maxIndex] = tempDigit;
-                break;
-            }
-        }
-        int number = 0;
-        for (int digit : nums) {
-            number = number * 10 + digit;
-        }
-        return number;
-
+       }
+       int nber = 0;
+       for(int i = 0; i < n; i++){
+        nber = nber * 10 + nums[i];
+       }
+       return nber;
     }
 }
