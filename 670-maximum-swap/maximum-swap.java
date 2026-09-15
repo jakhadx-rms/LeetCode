@@ -12,14 +12,21 @@ class Solution {
             nums[i] = temp % 10;
             temp /= 10;
         }
-        for (int i = 0; i < n; i++) {
-            int maxIndex = i;
-            for (int j = i + 1; j < n; j++) {
-                if (nums[j] >= nums[maxIndex]) {
-                    maxIndex = j;
-                }
+        int[] suffixMax = new int[n];
+        suffixMax[n - 1] = n - 1;
+        for (int i = n - 2; i >= 0; i--) {
+            int next = suffixMax[i + 1];
+            if (nums[i] > nums[next]) {
+                suffixMax[i] = i;
+            } else {
+
+                suffixMax[i] = next;
             }
+        }
+        for (int i = 0; i < n - 1; i++) {
+            int maxIndex = suffixMax[i + 1];
             if (nums[maxIndex] > nums[i]) {
+
                 int tempDigit = nums[i];
                 nums[i] = nums[maxIndex];
                 nums[maxIndex] = tempDigit;
@@ -31,6 +38,6 @@ class Solution {
             number = number * 10 + digit;
         }
         return number;
-        
+
     }
 }
