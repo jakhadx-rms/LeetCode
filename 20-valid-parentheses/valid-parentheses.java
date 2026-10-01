@@ -11,9 +11,9 @@ class Solution {
                     return false;
                 }
             char top = stack.pop();
-           if(top == '(' && ch != ')') return false;
-                if(top == '[' && ch != ']') return false;
-                if(top == '{' && ch != '}') return false;
+            if(top == '(' && ch != ')') return false;
+            if(top == '[' && ch != ']') return false;
+            if(top == '{' && ch != '}') return false;
         }
       }
       return stack.isEmpty();
